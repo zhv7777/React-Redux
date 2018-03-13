@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "react-bootstrap": "^0.32.1",
+    "react-google-autocomplete": "^1.0.15",
     "redux-devtools": "^3.4.1"
   }
 }

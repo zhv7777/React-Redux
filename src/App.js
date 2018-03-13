@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import './App.css';
 import { store, weekWeather } from './reducers/weather-reducer';
+import Autocomplete from 'react-google-autocomplete';
 import Today from './components/today';
 import Week from './components/week';
 
@@ -58,7 +59,22 @@ class App extends Component {
 	    });
 
 	  }
-	 
+	updateCity = (place) => {
+		var placeAutocomplete = "";
+	    var placeArray = place.address_components;
+	    placeArray.map(function(item){
+		    if(item.types.includes('locality')){
+			    placeAutocomplete = item.short_name;
+		    }
+		    if(item.types.includes('country')){
+			    placeAutocomplete = placeAutocomplete + "," + item.short_name;
+		    }
+	    })
+		 this.setState({
+		    inputValue: placeAutocomplete,
+	    })
+		
+	}
 	updateInputValue = (evt) => {
 	    this.setState({
 	      inputValue: evt.target.value,
@@ -71,7 +87,16 @@ class App extends Component {
       <div className="App">
       	<div className="header">
 	      	<h2>Get current and future weather forecast</h2>
-	      	<input value={this.state.inputValue} onChange={this.updateInputValue}/>
+	      	<Autocomplete
+			    style={{width: '90%'}}
+			    onPlaceSelected={(place) => {
+				    this.updateCity(place);
+			    }}
+			    types={['(regions)']}
+			    value={this.state.inputValue}
+			    onChange={this.updateInputValue}
+			    id="findCity"
+			/>
 			<button onClick={this.fetchCity}>Find city</button>
 			
       	</div>
@@ -84,6 +109,7 @@ class App extends Component {
 				<Week />
 			</div>
 		}
+		
       </div>
     );
   }
