@@ -1,0 +1,78 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+.square{
+	width: 40px;
+	height: 40px;
+}
+.header{
+	background-color: #659eff;
+	padding: 30px 0;
+}
+.not-rendered{
+	display: none;
+}
+.rendered{
+	display: block;
+	float: left;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: lightblue;
+    margin-top: 40px;
+}
+.weather{
+	float: left;
+    background: aliceblue;
+    padding: 30px;
+    text-align: left;
+    border: 1px solid cornflowerblue;
+    margin: 30px;
+    clear: both;
+}
+.top_description{
+	font-size: 20px;
+    color: cornflowerblue;
+}
+.fa {
+	font-size: 30px;
+    margin-left: 20px;
+    color: cornflowerblue;
+}
+.nav-tabs{
+	border-bottom: 1px solid cornflowerblue;
+}
+.tempChart{
+	display: inline-flex;
+}
+.chartBlock{
+	padding: 5px;
+	text-align: center;
+	border-left: 1px solid cornflowerblue;
+	height: 100px;
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media only screen and (max-width: 480px) {
+   .chartBlock{
+	   padding: 3px;
+   }
+   .chartBlock img{
+	   width: 30px;
+   }
+   .weatherWeek{
+	   margin: 0 auto;
+	   padding-left: 0;
+   }
+}
